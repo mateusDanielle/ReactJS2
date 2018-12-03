@@ -5,8 +5,17 @@ remover arquivos css, test, logo.svg, manifest.json
 //se não for usar PWA -> remover também serviceWorker.js
 index.html :
     1 - remover importação do manifest.json
-    2 - alterar nome da aplicação 
-index.js : 
+    2 - alterar nome da aplicação
+index.js :
     1 - remover import css e serviceWorker
-App.js : 
+App.js :
     1 - remover import css e logo e "limpar" retorno
+
+
+//Configurando estrutura
+terminal -> yarn add eslint -D
+terminal -> node_modules/.bin/eslint --init -> 'Use a popular style guide' -> 'Airbnb' -> 'y' -> JSON -> 'Y'
+deletar package-lock.json
+terminal -> yarn
+criar .editorconfig
+configurar .eslintrc
