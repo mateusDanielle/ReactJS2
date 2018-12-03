@@ -13,9 +13,17 @@ App.js :
 
 
 //Configurando estrutura
-terminal -> yarn add eslint -D
-terminal -> node_modules/.bin/eslint --init -> 'Use a popular style guide' -> 'Airbnb' -> 'y' -> JSON -> 'Y'
-deletar package-lock.json
-terminal -> yarn
+v1.0
+    terminal -> yarn add eslint -D
+    terminal -> node_modules/.bin/eslint --init -> 'Use a popular style guide' -> 'Airbnb' -> 'y' -> JSON -> 'Y'
+    deletar package-lock.json
+    terminal -> yarn
+v2.0
+    terminal -> yarn add -D eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react
+
 criar .editorconfig
 configurar .eslintrc
+
+
+//Instalando styled-components
+terminal -> yarn add styled-components
