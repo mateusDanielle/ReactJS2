@@ -3,30 +3,30 @@ import PropTypes from 'prop-types';
 
 import { Container, Repository } from './styles';
 
-const CompareList = ({ repositories, teste }) => (
+const CompareList = ({ repositories }) => (
   <Container>
     {repositories.map(repository => (
       <Repository>
         <header>
-          <img src={repository.owner.avatar_url} alt="facebook" />
-          <strong>{teste}</strong>
-          <small>facebook</small>
+          <img src={repository.owner.avatar_url} alt={repository.owner.login} />
+          <strong>{repository.name}</strong>
+          <small>{repository.owner.login}</small>
         </header>
         <ul>
           <li>
-            95,019
+            {repository.stargazers_count}
             <small>stars</small>
           </li>
           <li>
-            95,019
-            <small>stars</small>
+            {repository.forks_count}
+            <small>forks</small>
           </li>
           <li>
-            95,019
-            <small>stars</small>
+            {repository.open_issues_count}
+            <small>issues</small>
           </li>
           <li>
-            3 days ago
+            {repository.pushed_at}
             <small>last commit</small>
           </li>
         </ul>
@@ -36,7 +36,6 @@ const CompareList = ({ repositories, teste }) => (
 );
 
 CompareList.propTypes = {
-  teste: PropTypes.string.isRequired,
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
