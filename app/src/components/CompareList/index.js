@@ -6,7 +6,7 @@ import { Container, Repository } from './styles';
 const CompareList = ({ repositories }) => (
   <Container>
     {repositories.map(repository => (
-      <Repository>
+      <Repository key={repository.id}>
         <header>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <strong>{repository.name}</strong>
@@ -38,7 +38,16 @@ const CompareList = ({ repositories }) => (
 CompareList.propTypes = {
   repositories: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      owner: PropTypes.shape({
+        avatar_url: PropTypes.string.isRequired,
+        login: PropTypes.string.isRequired,
+      }).isRequired,
+      name: PropTypes.string.isRequired,
+      stargazers_count: PropTypes.number.isRequired,
+      forks_count: PropTypes.number.isRequired,
+      open_issues_count: PropTypes.number.isRequired,
+      pushed_at: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };
