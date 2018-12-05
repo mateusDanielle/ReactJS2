@@ -41,3 +41,6 @@ terminal -> yarn add moment
 //Adicionando MomentJS
 //font-awesome
 terminal -> yarn add font-awesome
+
+//Efeito movimentação CSS
+https://github.com/imbitubadigital/goreact-desafio02/commit/514b4a777cfd91d42b1380fb7c3257e90b2cefcc
