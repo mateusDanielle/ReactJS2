@@ -27,3 +27,9 @@ configurar .eslintrc
 
 //Instalando styled-components
 terminal -> yarn add styled-components
+
+//Buscando repositórios da API
+//consumindo APIs
+terminal -> yarn add axios
+//Proptypes
+terminal -> yarn add prop-types
