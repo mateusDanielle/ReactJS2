@@ -33,3 +33,7 @@ terminal -> yarn add styled-components
 terminal -> yarn add axios
 //Proptypes
 terminal -> yarn add prop-types
+
+//Adicionando MomentJS
+//Trabalhando com datas
+terminal -> yarn add moment
