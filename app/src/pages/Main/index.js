@@ -16,6 +16,12 @@ export default class Main extends Component {
     repositories: [],
   };
 
+  componentDidMount() {
+    this.loadStorage();
+  }
+
+  getApi = search => api.get(`repos/${search}`);
+
   handleAddRepository = async (e) => {
     e.preventDefault();
 
@@ -24,7 +30,7 @@ export default class Main extends Component {
     const { repositories, repositoryInput } = this.state;
 
     try {
-      const { data: repository } = await api.get(`/repos/${repositoryInput}`);
+      const { data: repository } = await this.getApi(repositoryInput);
 
       repository.lastCommit = moment(repository.pushed_at).fromNow();
 
@@ -33,11 +39,39 @@ export default class Main extends Component {
         repositories: [...repositories, repository],
         repositoryError: false,
       });
+      const { repositories: storages } = this.state;
+      this.saveToStorage(storages);
     } catch (err) {
       this.setState({ repositoryError: true });
     } finally {
       this.setState({ loading: false });
     }
+  };
+
+  loadStorage = () => {
+    this.setState({
+      repositories: JSON.parse(localStorage.getItem('@GitCompare:repositories')) || [],
+    });
+  };
+
+  saveToStorage = (storages) => {
+    localStorage.setItem('@GitCompare:repositories', JSON.stringify(storages));
+  };
+
+  removeItem = ({ id }) => {
+    const { repositories: currentRepositories } = this.state;
+    const removedRepositories = currentRepositories.filter(r => r.id !== id);
+    this.saveToStorage(removedRepositories);
+    this.loadStorage();
+  };
+
+  updateItem = async ({ id, full_name: newSearch }) => {
+    const { repositories: currentRepositories } = this.state;
+    const { data: repository } = await this.getApi(newSearch);
+    repository.lastCommit = moment(repository.pushed_at).fromNow();
+    const upReposotories = currentRepositories.map(r => (r.id === id ? repository : r));
+    this.saveToStorage(upReposotories);
+    this.loadStorage();
   };
 
   render() {
@@ -57,7 +91,11 @@ export default class Main extends Component {
           />
           <button type="submit">{loading ? <i className="fa fa-spinner fa-pulse" /> : 'OK'}</button>
         </Form>
-        <CompareList repositories={repositories} />
+        <CompareList
+          repositories={repositories}
+          removeItem={this.removeItem}
+          updateItem={this.updateItem}
+        />
       </Container>
     );
   }

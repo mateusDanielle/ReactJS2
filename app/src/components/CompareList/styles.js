@@ -59,3 +59,36 @@ export const Repository = styled.div`
     }
   }
 `;
+
+export const Action = styled.div`
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    border-radius: 3px;
+    border: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-basis: calc(49%);
+    padding: 8px;
+    background: #136dd4;
+    color: #fff;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-right: 8px;
+    }
+  }
+  button:hover {
+    background: #0d59af;
+  }
+  button:nth-child(2n) {
+    background: #dd0505;
+  }
+  button:nth-child(2n):hover {
+    background: #b30404;
+  }
+`;

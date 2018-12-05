@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Repository } from './styles';
+import { Container, Repository, Action } from './styles';
 
-const CompareList = ({ repositories }) => (
+const CompareList = ({ repositories, removeItem, updateItem }) => (
   <Container>
     {repositories.map(repository => (
       <Repository key={repository.id}>
@@ -30,6 +30,16 @@ const CompareList = ({ repositories }) => (
             <small>last commit</small>
           </li>
         </ul>
+        <Action>
+          <button type="button" onClick={updateItem.bind(this, repository)}>
+            <i className="fa fa-edit" />
+            Atualizar
+          </button>
+          <button type="button" onClick={removeItem.bind(this, repository)}>
+            <i className="fa fa-trash" />
+            Deletar
+          </button>
+        </Action>
       </Repository>
     ))}
   </Container>
@@ -49,6 +59,8 @@ CompareList.propTypes = {
       open_issues_count: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  removeItem: PropTypes.func.isRequired,
+  updateItem: PropTypes.func.isRequired,
 };
 
 export default CompareList;
