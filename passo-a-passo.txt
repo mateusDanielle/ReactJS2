@@ -37,3 +37,7 @@ terminal -> yarn add prop-types
 //Adicionando MomentJS
 //Trabalhando com datas
 terminal -> yarn add moment
+
+//Adicionando MomentJS
+//font-awesome
+terminal -> yarn add font-awesome
